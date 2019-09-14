@@ -52,8 +52,8 @@ public  class PhoneBook {
     }
 
     /**
-     * Insert the {@code name} and the {@code phone} to the list if the {@code phone} have the accepted combination,
-     * TreeMap will insert data in name alphabetical order
+     * Insert the {@code name} and the {@code phone} to the list if the {@code phone} have an accepted combination,
+     * TreeMap will insert data in {@code name} alphabetical order
      *
      * @param name the name of the pair this will be the key of the TreeMap
      * @param phone the phone number to add
@@ -110,7 +110,37 @@ public  class PhoneBook {
         }
     }
 
+ /**
+     * Delete an element from phones TreeMap, when the element is found the for sentence will break.
+     *
+     * @param name the random name provide in the TreeMap
+     */
 
+    public void deletePairByName(String name){
+        phones.remove(name);
+    }
+
+    /**
+     * Returns the phone number correspond to the {@code name} given , null if {@code name} is not present in phones TreeMap.
+     *
+     * @param name the random name provide in the TreeMap
+     *
+     */
+
+    public String getPhoneNumberByName(String name){
+        System.out.print(phones.get(name));
+        return phones.get(name);
+    }
+
+    /**
+     * Print all pairs of phone number sorted by phone number in text format.
+     *
+     */
+
+
+    public void printSortedPhoneNumbers(){
+        System.out.print(phones);
+    }
 
 
 }
