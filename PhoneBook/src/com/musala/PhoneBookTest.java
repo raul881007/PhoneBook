@@ -5,18 +5,18 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PhoneBookTest {
-    PhoneBook phoneBook= new PhoneBook();
+    private PhoneBook phoneBook= new PhoneBook();
     @Test
     void addNewPair() {
         phoneBook.addNewPair("mName","00359874123456");
-        assertEquals(1,phoneBook.phones.size());
+        assertEquals(1,phoneBook.getPhones().size());
     }
 
     @Test
     void deletePairByName() {
         createPhoneBook();
         phoneBook.deletePairByName("aName");
-        assertEquals(4,phoneBook.phones.size());
+        assertEquals(4,phoneBook.getPhones().size());
     }
 
     @Test
@@ -37,5 +37,11 @@ class PhoneBookTest {
     void getPhoneNumberByName() {
         createPhoneBook();
         phoneBook.getPhoneNumberByName("bName");
+    }
+
+    @Test
+    void addFromFile() {
+        phoneBook.addFromFile("/Users/equipo/Desktop/PhoneBookFile.txt");
+        assertEquals(6,phoneBook.getPhones().size());
     }
 }
