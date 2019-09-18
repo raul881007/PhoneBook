@@ -1,7 +1,9 @@
 package com.musala;
 
 import java.io.*;
-import java.util.TreeMap;
+import java.math.BigInteger;
+import java.util.*;
+import java.util.stream.Stream;
 
 /**
  * A class to do operations in a Phonebook.
@@ -140,9 +142,28 @@ class PhoneBook {
      *
      */
 
-
     void printSortedPhoneNumbers(){
         System.out.print(phones);
+    }
+
+    /**
+     * Print the sorted five data from phone book which are with the biggest count of registered calls
+     * @param outgoingCalls HashMap that contains the pairs (name, phone number) and the number of outgoing calls done
+     */
+
+    void printSortedOutgoingCalls( HashMap<Map.Entry<String,String>,Integer> outgoingCalls){
+
+        HashMap<Map.Entry<String,String>,Integer> resutl_map= new LinkedHashMap<>();
+        outgoingCalls.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).forEachOrdered(
+                value->resutl_map.put(value.getKey(),value.getValue())
+        );
+        int timesToShow=0;
+        for(Map.Entry<Map.Entry<String,String>,Integer> resultValue:resutl_map.entrySet()){
+            if(timesToShow<5){
+                System.out.println("Name:"+resultValue.getKey().getKey()+ ", Phone:"+resultValue.getKey().getValue() + ", Times:"+resultValue.getValue() + "\n");
+                timesToShow ++;
+            }
+        }
     }
 
 
